@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: crud_nome_email
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn core.wsgi
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+    migrations:
+      run: |
+        python manage.py migrate
