@@ -1,8 +1,7 @@
 services:
   - type: web
-    name: crud_nome_email
+    name: crud-nome-email
     env: python
-    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn core.wsgi
-    preDeployCommand: python manage.py migrate
+    postDeployCommand: python manage.py migrate
